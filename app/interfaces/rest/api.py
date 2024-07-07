@@ -1,22 +1,17 @@
-from flask import Flask, request, jsonify
-from ...application.services import UserSettingsRepository
-from ...infrastructure.sqlite_repository import SQLiteUserRepository
+from flask import Flask, request
+from flask_socketio import SocketIO, emit
+from ../../domain.models import Settings, session_scope
 
 app = Flask(__name__)
-user_service = UserSettingsRepository(SQLiteUserRepository('chronos.db'))
+socketio = SocketIO(app)
 
-@app.route('/users', methods=['POST'])
-def create_user():
-    data = request.json
-    user_service.create_user(data['name'], data['email'])
-    return jsonify({'message': 'User created'}), 201
+@socketio.on('update_settings')
+def handle_update_settings(data):
+    with session_scope() as session:
+        settings = session.query(Settings).first()
+        for name, value in data.items():
+            setattr(settings, name, value)
+        session.commit()
 
-@app.route('/users/<int:user_id>', methods=['GET'])
-def get_user(user_id):
-    user = user_service.get_user(user_id)
-    return jsonify(user.__dict__)
-
-@app.route('/users', methods=['GET'])
-def list_users():
-    users = user_service.list_users()
-    return jsonify([user.__dict__ for user in users])
+if __name__ == "__main__":
+    socketio.run(app, host='0.0.0.0', port=8000)

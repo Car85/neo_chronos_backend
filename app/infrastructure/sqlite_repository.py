@@ -1,5 +1,5 @@
 import sqlite3
-from ..domain.models import User
+from ..domain.models import Settings
 from ..domain.repository import UserRepository
 
 class SQLiteUserRepository(UserRepository):
