@@ -10,18 +10,6 @@ socketio = SocketIO(app)
 settings_repository = SQLiteSettingsRepository(DB_PATH)
 settings_service = SettingsService(settings_repository)
 
-@socketio.on('update_settings')
-def handle_update_settings(data):
-    with session_scope() as session:
-        settings = session.query(Settings).first()
-        for name, value in data.items():
-            setattr(settings, name, value)
-        session.commit()
-
-if __name__ == "__main__":
-    socketio.run(app, host='0.0.0.0', port=8000)
-
-
 @app.route('/settings', methods=['GET'])
 def get_settings():
     settings = settings_service.get_settings()
@@ -45,3 +33,14 @@ def update_settings():
     )
     settings_service.update_settings(settings)
     return '', 204
+
+@socketio.on('update_settings')
+def handle_update_settings(data):
+    with session_scope() as session:
+        settings = session.query(Settings).first()
+        for name, value in data.items():
+            setattr(settings, name, value)
+        session.commit()
+
+if __name__ == "__main__":
+    socketio.run(app, host='0.0.0.0', port=8000)

@@ -1,8 +1,8 @@
 import sqlite3
 from ..domain.models import Settings
-from ..domain.repository import UserSettingsRepository
+from ..application.settings_service import SettingsService
 
-class SQLiteSettingsRepository(UserSettingsRepository):
+class SQLiteSettingsRepository(SettingsService):
 
     def __init__(self, db_path):
         self.db_path = db_path
