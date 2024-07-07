@@ -1,0 +1,54 @@
+.
+├── app
+│   ├── application
+│   │   ├── __init__.py
+│   │   ├── __pycache__
+│   │   │   ├── __init__.cpython-312.pyc
+│   │   │   └── services.cpython-312.pyc
+│   │   └── services.py
+│   ├── config
+│   │   ├── chronos_config.json
+│   │   ├── config_parser.py
+│   │   ├── __init__.py
+│   │   └── root_logger.py
+│   ├── domain
+│   │   ├── __init__.py
+│   │   ├── models.py
+│   │   ├── __pycache__
+│   │   │   ├── __init__.cpython-312.pyc
+│   │   │   ├── models.cpython-312.pyc
+│   │   │   └── repository.cpython-312.pyc
+│   │   └── repository.py
+│   ├── infrastructure
+│   │   ├── __init__.py
+│   │   ├── __pycache__
+│   │   │   ├── __init__.cpython-312.pyc
+│   │   │   └── sqlite_repository.cpython-312.pyc
+│   │   └── sqlite_repository.py
+│   ├── __init__.py
+│   ├── interfaces
+│   │   ├── __init__.py
+│   │   ├── __pycache__
+│   │   │   └── __init__.cpython-312.pyc
+│   │   └── rest
+│   │       ├── api.py
+│   │       ├── __init__.py
+│   │       └── __pycache__
+│   │           ├── api.cpython-312.pyc
+│   │           └── __init__.cpython-312.pyc
+│   └── __pycache__
+│       └── __init__.cpython-312.pyc
+├── architec.txt
+├── config.py
+├── README.md
+├── requirements.txt
+├── run.py
+├── scripts
+│   └── create_user.py
+├── test
+│   ├── __init__.py
+│   ├── test_repository.py
+│   └── test_services.py
+└── users.db
+
+16 directories, 36 files
