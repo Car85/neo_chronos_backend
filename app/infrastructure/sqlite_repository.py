@@ -1,8 +1,8 @@
 import sqlite3
 from ..domain.models import Settings
-from ..domain.repository import UserRepository
+from ..domain.repository import UserSettingsRepository
 
-class SQLiteUserRepository(UserRepository):
+class SQLiteUserRepository(UserSettingsRepository):
 
     def __init__(self, db_path):
         self.db_path = db_path

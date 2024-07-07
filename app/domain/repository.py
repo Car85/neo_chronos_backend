@@ -18,7 +18,7 @@ class UserSettingsRepository(ABC):
 
 
     @abstractmethod
-    def update(self, settings: Settings) -> None:
+    def update_settings(self, settings: Settings) -> None:
         pass
 
     @abstractmethod

@@ -10,7 +10,7 @@ class SQLiteSettingsRepository(UserSettingsRepository):
     def get_connection(self):
         return sqlite3.connect(self.db_path)
 
-    def get(self) -> Settings:
+    def get_settings(self) -> Settings:
         connection = self.get_connection()
         cursor = connection.cursor()
         cursor.execute('SELECT * FROM settings LIMIT 1')
@@ -31,7 +31,7 @@ class SQLiteSettingsRepository(UserSettingsRepository):
             )
         return None
 
-    def update(self, settings: Settings) -> None:
+    def update_settings(self, settings: Settings) -> None:
         connection = self.get_connection()
         with connection:
             connection.execute('''

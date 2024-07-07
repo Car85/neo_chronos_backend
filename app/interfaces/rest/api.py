@@ -1,14 +1,14 @@
 from flask import Flask, request, jsonify
-from ...application.services.settings_service import SettingsService
+from flask_socketio import SocketIO
+from ...application.settings_service import SettingsService
 from ...infrastructure.settings_repository import SQLiteSettingsRepository
-from flask_socketio import SocketIO, emit
-from ../../domain.models import Settings, session_scope
+from ...domain.models import Settings, session_scope
 
 app = Flask(__name__)
+DB_PATH = "./chronos.db"
 socketio = SocketIO(app)
-settings_repository = SQLiteSettingsRepository(db_path)
+settings_repository = SQLiteSettingsRepository(DB_PATH)
 settings_service = SettingsService(settings_repository)
-db_path = "./chronos.db"
 
 @socketio.on('update_settings')
 def handle_update_settings(data):
