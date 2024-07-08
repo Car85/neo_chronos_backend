@@ -1,6 +1,9 @@
 # Neo Chronos Backend
+Chronos is a boiling/cooling water system working on Raspberry Pi. Chronos has a web interface to control the system and tracking for the state. 
 
-Backend service for the modernized Chronos application, implemented with Flask.
+https://bitbucket.org/quarck/chronos
+
+Backend service for the modernized Chronos application, implemented with Flask, Python 3.12.
 
 ## Table of Contents
 
