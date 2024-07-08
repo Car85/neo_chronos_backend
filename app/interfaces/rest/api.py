@@ -1,9 +1,10 @@
 from flask import Flask, request, jsonify
-from flask_cors import CORS
 from flask_socketio import SocketIO
 from ...application.settings_service import SettingsService
 from ...infrastructure.settings_repository import SQLiteSettingsRepository
 from ...domain.models import Settings, session_scope
+from flask_cors import CORS
+
 
 app = Flask(__name__)
 CORS(app)
