@@ -1,10 +1,11 @@
 from ..domain.models import Settings
 from ..infrastructure.communication.socket_client import SocketClient
+from ..domain.repository import SettingsRepository
 
 
 class SettingsService:
 
-    def __init__(self, settings_repository: Settings):
+    def __init__(self, settings_repository: SettingsRepository):
         self.settings_repository = settings_repository
         self.socket_client = SocketClient()  
 
@@ -14,4 +15,7 @@ class SettingsService:
 
     def update_settings(self, settings: Settings) -> None:
         self.settings_repository.update(settings)
+
+    def add_settings(self, settings: Settings) -> None:
+        self.settings_repository.add_settings(settings)
 

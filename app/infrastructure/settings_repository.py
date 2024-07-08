@@ -1,8 +1,8 @@
 import sqlite3
 from ..domain.models import Settings
-from ..application.settings_service import SettingsService
+from ..domain.repository import SettingsRepository
 
-class SQLiteSettingsRepository(SettingsService):
+class SQLiteSettingsRepository(SettingsRepository):
 
     def __init__(self, db_path):
         self.db_path = db_path
@@ -32,7 +32,7 @@ class SQLiteSettingsRepository(SettingsService):
                 '''
             )
 
-    def add(self, settings: Settings):
+    def add_settings(self, settings: Settings):
         connection = self.get_connection()
         with connection:
             connection.execute(
