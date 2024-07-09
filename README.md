@@ -30,7 +30,7 @@ To get a local copy up and running, follow these steps:
 
 ### Prerequisites
 
-- Python (version 3.7 or higher)
+- Python version 3.12
 - pip (Python package installer)
 
 ### Installation
