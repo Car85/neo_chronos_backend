@@ -13,7 +13,7 @@ class SettingsRepository(ABC):
         pass
 
     @abstractmethod
-    def get(self, settings_id: int) -> Settings:
+    def get(self, id: int) -> Settings:
         pass
 
     @abstractmethod

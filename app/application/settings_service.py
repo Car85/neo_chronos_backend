@@ -8,8 +8,8 @@ class SettingsService:
         self.settings_repository = settings_repository
 
 
-    def get_settings(self) -> Settings:
-        return self.settings_repository.get()
+    def get_settings_by_id(self, id: int) -> Settings:
+        return self.settings_repository.get(id)
 
     def update_settings(self, settings: Settings) -> None:
         self.settings_repository.update(settings)

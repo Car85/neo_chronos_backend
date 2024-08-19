@@ -4,6 +4,7 @@ from contextlib import contextmanager
 from sqlalchemy.orm import sessionmaker, scoped_session
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import create_engine, Column, INTEGER, REAL, BOOLEAN, DateTime
+from sqlalchemy import inspect 
 from app.config.config_parser import cfg
 from app.config.root_logger import root_logger as logger
 
@@ -160,7 +161,9 @@ class Settings(Base):
     mode_switch_timestamp = Column(DateTime, default=datetime.now, nullable=False)
     mode_switch_lockout_time = Column(INTEGER, default=2, nullable=False)
 
-
+    def to_dict(self):
+       return {c.key: getattr(self, c.key) for c in inspect(self).mapper.column_attrs}
+    
 @contextmanager
 def session_scope():
     "Provide a transactional scope around a series of operations."

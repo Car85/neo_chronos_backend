@@ -50,7 +50,7 @@ class SQLiteSettingsRepository(SettingsRepository):
                 )
             )
 
-    def get(self, settings_id: int) -> Settings:
+    def get(self, id: int) -> Settings:
         connection = self.get_connection()
         cursor = connection.cursor()
         cursor.execute(
@@ -60,7 +60,7 @@ class SQLiteSettingsRepository(SettingsRepository):
                    mode_switch_timestamp, mode_switch_lockout_time
             FROM settings WHERE id = ?
             ''',
-            (settings_id,)
+            (id,)
         )
         row = cursor.fetchone()
         if row:

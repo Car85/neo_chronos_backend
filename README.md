@@ -60,19 +60,33 @@ Start the Flask server:
 
 ```sh
 
-flask run
+python3.12 run.py
 ```
-The server will start at http://localhost:5000.
+The server will start at http://localhost:5000
 API Endpoints
 
     POST /add_settings: Add new settings to the application.
 
-Example:
+Example to create a new settings values:
 
 ```sh
 
-curl -X POST -H "Content-Type: application/json" -d '{"key": "value"}' http://localhost:5000/add_settings
+curl -X POST -H "Content-Type: application/json" -d '{"tolerance":"5","setpoint_min":"86","setpoint_max":"130",
+"setpoint_offset_summer":"25","setpoint_offset_winter":"29",
+"mode_change_delta_temp":"2","mode_switch_lockout_time":"-1",
+"cascade_time":"11"}'  http://localhost:5000/add_settings
+
 ```
+
+Example to get a particular configuration of the setting values filtering by id
+Please note you have chronos.db with some examples
+
+```sh
+
+curl -X GET http://localhost:5000/settings/1
+```
+
+
 Contributing
 
 Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated.
